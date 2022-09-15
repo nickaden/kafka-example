@@ -1,0 +1,19 @@
+spring:
+  kafka:
+    bootstrap-servers: "localhost:29092,localhost:39092,localhost:49092"
+    producer:
+      transaction-id-prefix: "main-tx"
+    consumer:
+      group-id: "main-group"
+      enable-auto-commit: false
+      isolation-level: read_committed
+
+app:
+  kafka:
+    topic:
+      name: "main"
+      partitions: 3
+      replication: 2
+    consumer:
+      group:
+        id: "main"

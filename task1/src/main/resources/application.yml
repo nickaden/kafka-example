@@ -1,0 +1,22 @@
+spring:
+  kafka:
+    bootstrap-servers: "localhost:29092,localhost:39092,localhost:49092"
+    properties:
+      # Combination of this properties will form producer "at-least-once" guaranties.
+      acks: all                   # producer will require acknowledge from broker
+      retries: 2147483647         # producer will retry message sending until get acknowledge or timeout caused
+      enable.idempotence: false   # producer_id and sequence number won't be assigned to message son there is possible duplication
+      # This configuration makes consumer work in "at-most-one" guarantee
+      enable.auto.commit: false
+    listener:
+      ack-mode: manual
+
+app:
+  kafka:
+    topic:
+      name: "main"
+      partitions: 3
+      replication: 2
+    consumer:
+      group:
+        id: "main"

@@ -1,0 +1,16 @@
+plugins {
+    id "java"
+    id "io.freefair.lombok" version "6.5.1"
+}
+
+allprojects {
+    apply plugin: "java"
+    apply plugin: "io.freefair.lombok"
+
+    group "by.nick"
+    version "1.0"
+
+    repositories {
+        mavenCentral()
+    }
+}

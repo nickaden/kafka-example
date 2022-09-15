@@ -1,0 +1,19 @@
+spring:
+  kafka:
+    bootstrap-servers: "localhost:29092,localhost:39092,localhost:49092"
+    listener.concurrency: 3
+
+  jpa.hibernate.ddl-auto: update
+  datasource:
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/taxi
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+app:
+  kafka:
+    topic:
+      name: "vehicle-distance"
+      partitions: 3
+      replications: 2
+    consumer:
+      groupId: "vehicle-distance-group"
